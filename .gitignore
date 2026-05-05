@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+frontend/node_modules/
+
+# Testing
+coverage/
+
+# Next.js
+frontend/.next/
+frontend/out/
+
+# Production
+frontend/build/
+
+# Python / FastAPI
+backend/__pycache__/
+backend/*.py[cod]
+backend/*$py.class
+backend/.venv/
+backend/venv/
+backend/ENV/
+backend/env/
+backend/.env
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Misc
+.vercel
+.turbo
+*.log
+.vscode/
+.idea/
+.gemini/
