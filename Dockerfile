@@ -1,5 +1,5 @@
 # Build Stage for Frontend
-FROM node:18-alpine AS frontend-builder
+FROM node:20-alpine AS frontend-builder
 WORKDIR /app/frontend
 COPY frontend/package.json frontend/package-lock.json ./
 RUN npm ci
@@ -10,11 +10,11 @@ RUN npm run build
 # Final Stage
 FROM python:3.11-slim
 
-# Install Node.js (for the Next.js runtime if needed, though standalone might not need it entirely, it's safer)
+# Install Node.js (for the Next.js runtime)
 RUN apt-get update && apt-get install -y \
     curl \
     supervisor \
-    && curl -sL https://deb.nodesource.com/setup_18.x | bash - \
+    && curl -sL https://deb.nodesource.com/setup_20.x | bash - \
     && apt-get install -y nodejs \
     && rm -rf /var/lib/apt/lists/*
 
