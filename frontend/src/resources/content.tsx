@@ -224,6 +224,16 @@ const gallery: Gallery = {
       alt: "AI Voice Communication Interface",
       orientation: "horizontal",
     },
+    {
+      src: "/images/projects/mini-dfs/cover.png",
+      alt: "MiniDfs Distributed Storage Interface",
+      orientation: "horizontal",
+    },
+    {
+      src: "/images/projects/job-portal/cover.png",
+      alt: "EliteHire Job Portal Dashboard",
+      orientation: "horizontal",
+    },
   ],
 };
 

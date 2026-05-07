@@ -2,11 +2,9 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-type Team = {
-  name: string;
-  role: string;
-  avatar: string;
-  linkedIn: string;
+type GitHubLink = {
+  name?: string;
+  link: string;
 };
 
 type Metadata = {
@@ -17,8 +15,15 @@ type Metadata = {
   image?: string;
   images: string[];
   tag?: string;
-  team: Team[];
+  team: {
+    name: string;
+    role: string;
+    avatar: string;
+    linkedIn: string;
+  }[];
   link?: string;
+  github?: string | GitHubLink[];
+  live?: string;
 };
 
 import { notFound } from "next/navigation";
@@ -49,6 +54,8 @@ function readMDXFile(filePath: string) {
     tag: data.tag || [],
     team: data.team || [],
     link: data.link || "",
+    github: data.github || "",
+    live: data.live || "",
   };
 
   return { metadata, content };

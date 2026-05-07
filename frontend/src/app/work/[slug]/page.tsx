@@ -102,21 +102,61 @@ export default async function Project({
         <Heading variant="display-strong-m">{post.metadata.title}</Heading>
       </Column>
       <Row marginBottom="32" horizontal="center">
-        <Row gap="16" vertical="center">
-          {post.metadata.team && <AvatarGroup reverse avatars={avatars} size="s" />}
-          <Text variant="label-default-m" onBackground="brand-weak">
-            {post.metadata.team?.map((member, idx) => (
-              <span key={idx}>
-                {idx > 0 && (
-                  <Text as="span" onBackground="neutral-weak">
-                    ,{" "}
-                  </Text>
+        <Column gap="16">
+          <Row gap="16" vertical="center" horizontal="center">
+            {post.metadata.team && <AvatarGroup reverse avatars={avatars} size="s" />}
+            <Text variant="label-default-m" onBackground="brand-weak">
+              {post.metadata.team?.map((member, idx) => (
+                <span key={idx}>
+                  {idx > 0 && (
+                    <Text as="span" onBackground="neutral-weak">
+                      ,{" "}
+                    </Text>
+                  )}
+                  <SmartLink href={member.linkedIn}>{member.name}</SmartLink>
+                </span>
+              ))}
+            </Text>
+          </Row>
+          <Row gap="12" horizontal="center" wrap>
+            {post.metadata.live && (
+              <Button
+                href={post.metadata.live}
+                variant="secondary"
+                size="s"
+                prefixIcon="globe"
+              >
+                Live Demo
+              </Button>
+            )}
+            {post.metadata.github && (
+              <>
+                {typeof post.metadata.github === "string" ? (
+                  <Button
+                    href={post.metadata.github}
+                    variant="secondary"
+                    size="s"
+                    prefixIcon="github"
+                  >
+                    GitHub
+                  </Button>
+                ) : (
+                  post.metadata.github.map((gh, index) => (
+                    <Button
+                      key={index}
+                      href={gh.link}
+                      variant="secondary"
+                      size="s"
+                      prefixIcon="github"
+                    >
+                      {gh.name || "GitHub"}
+                    </Button>
+                  ))
                 )}
-                <SmartLink href={member.linkedIn}>{member.name}</SmartLink>
-              </span>
-            ))}
-          </Text>
-        </Row>
+              </>
+            )}
+          </Row>
+        </Column>
       </Row>
       {post.metadata.images.length > 0 && (
         <Media priority aspectRatio="16 / 9" radius="m" alt="image" src={post.metadata.images[0]} />
