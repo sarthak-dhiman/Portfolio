@@ -220,11 +220,6 @@ const gallery: Gallery = {
       orientation: "horizontal",
     },
     {
-      src: "/images/projects/voice-agent/cover.png",
-      alt: "AI Voice Communication Interface",
-      orientation: "horizontal",
-    },
-    {
       src: "/images/projects/mini-dfs/cover.png",
       alt: "MiniDfs Distributed Storage Interface",
       orientation: "horizontal",
